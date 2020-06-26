@@ -1,0 +1,56 @@
+.box {
+    position: absolute;
+    border: 4px solid;
+    border-radius: 10px;
+	height: 458px;
+}
+
+.box img{
+    position: relative;
+    width: 70%;
+	height: 450px;
+	left: 15%;
+	right: 15%;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 15px;
+    background-color: aqua;
+  } 
+  
+/* Position the "next button" to the right */
+.prev {
+	right: 70%;
+}
+.next {
+	left: 15%;
+  }
+
+
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color:white;
+}
+
+.current_page{
+    position: relative;
+    color: white;
+	text-shadow: 2px 2px black;
+    font-weight: bold;
+    font-size: 20px;
+	left:44%;
+	bottom: 30px;
+}
+
+* {
+    font-family: courier;
+  }
+ 
+section{
+	height: 2300px;
+}
