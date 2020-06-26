@@ -41,7 +41,7 @@ function kiem_tra(){
     //do có nhiều lựa chọn nên dùng hàm forEach để check từng lựa chọn.
     var checkbox = document.querySelectorAll('[name="ST"]');
     var ischecked = false;
-    radio.forEach(function(a){
+    checkbox.forEach(function(a){
         if (a.checked){
             ischecked = true;
         }
