@@ -1,0 +1,20 @@
+header, footer{
+    padding-bottom: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+}
+ 
+/*Phần giữa	*/
+nav {
+	float:left;	
+    width: 30%;
+    padding: 1em;
+	}
+	
+section{
+    float:left;	
+    width: 70%;
+    padding: 1em;
+    min-height: 500px;
+	}
