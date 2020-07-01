@@ -570,7 +570,6 @@ function xuly1(){
     document.querySelector('#dap_an').innerHTML = dict[items]
     xuly_kytu();
     hint_disable();
-    swap();
 }
 
 //đảo nghịch từ điển
@@ -607,3 +606,6 @@ function hint_disable(){
     var da = document.querySelector('#dap_an');
     da.style.display = "none";
 }
+
+//swap lần đầu
+swap();
