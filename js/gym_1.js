@@ -6,7 +6,7 @@ function xuly(){
     if (group == 'ABS'){
         var ran = Math.floor(Math.random() * 49 + 1);  //ngẫu nhiên 1-49
     }
-    else if (group == 'DUMBELL'){
+    else if (group == 'Dumbell'){
         var ran = Math.floor(Math.random() * 25 + 1);  //ngẫu nhiên 1-25
     }
     else if (group == 'Chest'){
