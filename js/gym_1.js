@@ -1,20 +1,21 @@
-var arr = [];
-var x = 1;
-while(x < 49){
-  arr.push(x++);
-}
+var group = 'ABS';
 
-
-//lấy phần tử ngẫu nhiên
-function random_item(items)
-{
-    return items[Math.floor(Math.random()*items.length)]; 
-}
 //random tư thế mới
 function xuly(){
-    var ran = random_item(arr)
+    if (group == 'ABS'){
+        var ran = Math.floor(Math.random() * 49 + 1);  //ngẫu nhiên 1-49
+    }
+    else if (group == 'DUMBELL'){
+        var ran = Math.floor(Math.random() * 25 + 1);  //ngẫu nhiên 1-25
+    }
+    else if (group == 'Chest'){
+        var ran = Math.floor(Math.random() * 7 + 1);  //ngẫu nhiên 1-7
+    }
+    else if (group == 'G_HF'){
+        var ran = Math.floor(Math.random() * 7 + 1);  //ngẫu nhiên 1-7
+    }
     var hinh = document.querySelector('#img');
-    hinh.src = 'images/ABS/' + ran +'.png'
+    hinh.src = 'images/'+ group +'/' + ran +'.png'
     theCountdownDate =  new Date().getTime();
 }
 
@@ -82,4 +83,9 @@ var time_counter = document.getElementById("time_counter")
 time_counter.style.fontSize = '70px';
 time_counter.style.color = 'red';
 
+//đổi group
+function group_change(value){
+    group = value
+    alert('Đổi sang bài tập ' + value)
+}
 
