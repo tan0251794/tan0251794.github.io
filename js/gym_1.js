@@ -1,11 +1,12 @@
 var group = 'ABS';
+var remain_time = 30;
 
 //random tư thế mới
 function xuly(){
     if (group == 'ABS'){
         var ran = Math.floor(Math.random() * 49 + 1);  //ngẫu nhiên 1-49
     }
-    else if (group == 'Dumbell'){
+    else if (group == 'DUMBELL'){
         var ran = Math.floor(Math.random() * 25 + 1);  //ngẫu nhiên 1-25
     }
     else if (group == 'Chest'){
@@ -69,7 +70,7 @@ function count(){
     }
     
     //reset tư thế khác
-    if (theDistance >= 30000){
+    if (theDistance >= remain_time*1000){
         theCountdownDate =  new Date().getTime();
         xuly()
     }
@@ -89,3 +90,49 @@ function group_change(value){
     alert('Đổi sang bài tập ' + value)
 }
 
+//tăng giảm time
+function gain_time(){
+    if (remain_time == 30){
+        remain_time = 60;
+        alert('Thời gian mỗi động tác là 1 phút');
+    }
+    else if (remain_time == 60){
+        remain_time = 120;
+        alert('Thời gian mỗi động tác là 2 phút');
+    }
+    else if (remain_time == 120){
+        remain_time = 180;
+        alert('Thời gian mỗi động tác là 3 phút');
+    }
+    else if (remain_time == 180){
+        remain_time = 300;
+        alert('Thời gian mỗi động tác là 5 phút');
+    }
+    else if (remain_time == 300){
+        remain_time = 600;
+        alert('Thời gian mỗi động tác là 10 phút');
+    }
+}
+
+function reduce_time(){
+    if (remain_time == 600){
+        remain_time = 300;
+        alert('Thời gian mỗi động tác là 5 phút');
+    }
+    else if (remain_time == 300){
+        remain_time = 180;
+        alert('Thời gian mỗi động tác là 3 phút');
+    }
+    else if (remain_time == 180){
+        remain_time = 120;
+        alert('Thời gian mỗi động tác là 2 phút');
+    }
+    else if (remain_time == 120){
+        remain_time = 60;
+        alert('Thời gian mỗi động tác là 1 phút');
+    }
+    else if (remain_time == 60){
+        remain_time = 30;
+        alert('Thời gian mỗi động tác là 30 giây');
+    }
+}
