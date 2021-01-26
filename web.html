@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>học tiếng anh</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<style>
+    .center-edit {
+        justify-content: center;
+        text-align: center;
+        left: auto;
+        right: auto;
+    }
+
+    .height-100 {
+        height: 70px;
+    }
+</style>
+
+<body>
+    <div class="container center-edit">
+        <div class="row">
+            <h1 id="e1" class="col-12 height-100 mt-5"></h1>
+            <br><br><br>
+            <h5 id="e3" class="col-12 height-100" ></h5>
+            <h3 id="e2" class="col-12 height-100"></h3>
+            <div class="col-12">
+                <button class="btn btn-primary col-3 height-100" onclick="tv()">Đáp Án</button>
+                <button class="btn btn-primary col-3 height-100" onclick="vd()">Câu Ví Dụ</button>
+                <button class="btn btn-primary col-3 height-100" onclick="tdn()">Từ Đồng Nghĩa</button>
+           </div><br><br><br>
+            <button class="btn btn-success col-12 height-100 mt-1" onclick="next()">NEXT</button>
+        </div>
+    </div>
+    <div id="data">
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" >
+const vocabulary = [
+    {
+        "tiếng anh": "abide by",
+        "tiếng việt": "tuân thủ",
+        "phiên âm": "/əˈbaɪd/",
+        "câu ví dụ": "You'll have to abide by the agreement",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "agreement",
+        "tiếng việt": "hợp đồng",
+        "phiên âm": "/əˈɡriː.mənt/",
+        "câu ví dụ": "You'll have to abide by the agreement",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "assurance",
+        "tiếng việt": "đảm bảo",
+        "phiên âm": "/əˈʃɔː.rəns/",
+        "câu ví dụ": "They called for assurances that the government is committed to its education policy.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "cancellation",
+        "tiếng việt": "hủy bỏ",
+        "phiên âm": "/ˌkæn.səlˈeɪ.ʃən/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "determine",
+        "tiếng việt": "mục đích",
+        "phiên âm": "/dɪˈtɝː.mɪn/",
+        "câu ví dụ": "It is difficult to determine when drama first appeared in India.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "engage",
+        "tiếng việt": "thuê",
+        "phiên âm": "/ɪnˈɡeɪdʒ/",
+        "câu ví dụ": "It was difficult to engage the students at first.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "establish",
+        "tiếng việt": "thành lập",
+        "phiên âm": "/ɪˈstæb.lɪʃ/",
+        "câu ví dụ": "They now hope to establish a centre in Cuba.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "obligated",
+        "tiếng việt": "bắt buộc, trách nhiệm",
+        "phiên âm": "/ˈɑb·ləˌɡeɪt/",
+        "câu ví dụ": "He felt obligated to help",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "party",
+        "tiếng việt": "buổi tiệc",
+        "phiên âm": "/ˈpɑː.ti/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "provision",
+        "tiếng việt": "điều khoản, dịch vụ cung cấp",
+        "phiên âm": "/prəˈvɪʒ.ən/",
+        "câu ví dụ": "There is no provision for anyone to sit down here",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "resolve",
+        "tiếng việt": "giải quyết",
+        "phiên âm": "/rɪˈzɒlv/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "specific",
+        "tiếng việt": "cụ thể",
+        "phiên âm": "/spəˈsɪf.ɪk/",
+        "câu ví dụ": "The money was collected for a specific purpose",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "access",
+        "tiếng việt": "truy cập",
+        "phiên âm": "/ˈæk.ses/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "allocate",
+        "tiếng việt": "chỉ định",
+        "phiên âm": "/ˈæl.ə.keɪt/",
+        "câu ví dụ": "More resources are being allocated to the project",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "compatible",
+        "tiếng việt": "tương thích",
+        "phiên âm": "/kəmˈpæt.ə.bəl/",
+        "câu ví dụ": "the new system will be compatible with existing equipment",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "delete",
+        "tiếng việt": "xóa bỏ",
+        "phiên âm": "/dɪˈliːt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "display",
+        "tiếng việt": "trưng bày",
+        "phiên âm": "/dɪˈspleɪ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "duplicate",
+        "tiếng việt": "bản sao",
+        "phiên âm": "/ˈdʒuː.plɪ.keɪt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "failure",
+        "tiếng việt": "sự thất bại",
+        "phiên âm": "/ˈfeɪ.ljər/",
+        "câu ví dụ": "The success or failure of the plan depends on you.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "figure out",
+        "tiếng việt": "tìm ra",
+        "phiên âm": "/ˈfɪɡər/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "ignore",
+        "tiếng việt": "Làm lơ",
+        "phiên âm": "/ɪɡˈnɔːr/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "search",
+        "tiếng việt": "Tìm kiếm",
+        "phiên âm": "/sɝːtʃ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "shut down",
+        "tiếng việt": "tắt",
+        "phiên âm": "/ʃʌt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "warning",
+        "tiếng việt": "cảnh báo",
+        "phiên âm": "/ˈwɔː.nɪŋ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "abundant",
+        "tiếng việt": "phong phú",
+        "phiên âm": "/əˈbʌn.dənt/",
+        "câu ví dụ": "Fish are abundant in the lake",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "accomplishment",
+        "tiếng việt": "thành tựu",
+        "phiên âm": "/əˈkɑːm.plɪʃ.mənt/",
+        "câu ví dụ": "It was one of the President's greatest accomplishment",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "bring together",
+        "tiếng việt": "gom lại",
+        "phiên âm": "/brɪŋ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "candidate",
+        "tiếng việt": "ứng cử viên",
+        "phiên âm": "/ˈkæn.dɪ.deɪt/",
+        "câu ví dụ": "He is the best candidate for the job",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "come up with",
+        "tiếng việt": "nghĩ ra",
+        "phiên âm": "/kʌm/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "commensurate",
+        "tiếng việt": "tương xứng",
+        "phiên âm": "/kəˈmen.sjər.ət/",
+        "câu ví dụ": "Salary will be commensurate with experience",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "match",
+        "tiếng việt": "trận đấu",
+        "phiên âm": "/mætʃ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "profile",
+        "tiếng việt": "Hồ sơ",
+        "phiên âm": "/ˈproʊ.faɪl/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "qualifications",
+        "tiếng việt": "trình độ chuyên môn",
+        "phiên âm": "/ˌkwɒl.ɪ.fɪˈkeɪ.ʃən/",
+        "câu ví dụ": "He left school with no formal qualifications",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "recruit",
+        "tiếng việt": "tuyển dụng",
+        "phiên âm": "/rɪˈkruːt/ ",
+        "câu ví dụ": "They recruited several new members to the club",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "submit",
+        "tiếng việt": "Gửi đi",
+        "phiên âm": "/səbˈmɪt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "time-consuming",
+        "tiếng việt": "mất thời gian",
+        "phiên âm": "/ˈtaɪm.kənˌsjuː.mɪŋ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "bargain",
+        "tiếng việt": "trả giá",
+        "phiên âm": "/ˈbɑː.ɡɪn/",
+        "câu ví dụ": "The car was a bargain at that price",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "bear",
+        "tiếng việt": "chịu",
+        "phiên âm": "/beər/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "behavior",
+        "tiếng việt": "hành vi",
+        "phiên âm": "/bɪˈheɪ·vjər/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "checkout",
+        "tiếng việt": "Thủ tục thanh toán",
+        "phiên âm": "/ˈtʃek.aʊt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "comfort",
+        "tiếng việt": "thoải mái",
+        "phiên âm": "/ˈkʌm.fət/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "expand",
+        "tiếng việt": "mở rộng",
+        "phiên âm": "/ɪkˈspænd/",
+        "câu ví dụ": "Metals expand when they are heated",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "explore",
+        "tiếng việt": "khám phá",
+        "phiên âm": "/ɪkˈsplɔːr/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "item",
+        "tiếng việt": "mục",
+        "phiên âm": "/ˈaɪ.təm/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "mandatory",
+        "tiếng việt": "bắt buộc",
+        "phiên âm": "/ˈmæn.də.tɔːr.i/",
+        "câu ví dụ": "In 1991, the British government made it mandatory to wear rear seat belts in car",
+        "từ đồng nghĩa": "obligated"
+    },
+    {
+        "tiếng anh": "merchandise",
+        "tiếng việt": "hàng hóa",
+        "phiên âm": "/ˈmɜː.tʃən.daɪs/",
+        "câu ví dụ": "These tokens can be exchanged for merchandise in any of our stores.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "strictly",
+        "tiếng việt": "nghiêm chỉnh",
+        "phiên âm": "/ˈstrɪkt.li/",
+        "câu ví dụ": "She was brought up very strictly",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "trend",
+        "tiếng việt": "khuynh hướng",
+        "phiên âm": "/trend/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "accept",
+        "tiếng việt": "Chấp nhận",
+        "phiên âm": "/əkˈsept/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "balance",
+        "tiếng việt": "thăng bằng",
+        "phiên âm": "/ˈbæl.əns/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "borrow",
+        "tiếng việt": "mượn, vay",
+        "phiên âm": "/ˈbɒr.əʊ/",
+        "câu ví dụ": "can i borrow money",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "cautiously",
+        "tiếng việt": "thận trọng",
+        "phiên âm": "/ˈkɔː.ʃəs/",
+        "câu ví dụ": "She looked cautiously around and then walked away from the house",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deduct",
+        "tiếng việt": "khấu trừ",
+        "phiên âm": "/dɪˈdʌkt/",
+        "câu ví dụ": "The cost of your uniform will be deducted from your wages",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "dividend",
+        "tiếng việt": "cổ tức",
+        "phiên âm": "/ˈdɪv.ɪ.dend/",
+        "câu ví dụ": "Shareholders will receive an interim dividend payment of 50 cents a share",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "down payment",
+        "tiếng việt": "tiền đặt cọc",
+        "phiên âm": "/ˌdaʊn ˈpeɪ.mənt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "mortgage",
+        "tiếng việt": "thế chấp",
+        "phiên âm": "/ˈmɔː.ɡɪdʒ/",
+        "câu ví dụ": "He's been having trouble keeping up with his monthly mortgage repayments",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "restricted",
+        "tiếng việt": "hạn chế",
+        "phiên âm": "/rɪˈstrɪk.tɪd/",
+        "câu ví dụ": "Her vision is restricted in one eye",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "signature",
+        "tiếng việt": "Chữ ký",
+        "phiên âm": "/ˈsɪɡ.nə.tʃər/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "take out",
+        "tiếng việt": "đưa ra",
+        "phiên âm": "/teɪk aʊt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "transaction",
+        "tiếng việt": "Giao dịch",
+        "phiên âm": "/trænˈzæk.ʃən/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "adjacent",
+        "tiếng việt": "liền kề",
+        "phiên âm": "/əˈdʒeɪsnt/",
+        "câu ví dụ": "Our farm land was adjacent to the river",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "collaboration",
+        "tiếng việt": "hợp tác",
+        "phiên âm": "/kəˌlæb.əˈreɪ.ʃən/",
+        "câu ví dụ": "She wrote the book in collaboration with one of her students.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "concentrate",
+        "tiếng việt": "tập trung",
+        "phiên âm": "/ˈkɒn.sən.treɪt/",
+        "câu ví dụ": "she couldn't concentrate on that movie",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "conducive",
+        "tiếng việt": "thuận lợi",
+        "phiên âm": "/kənˈdʒuː.sɪv/",
+        "câu ví dụ": "Such a noisy environment was not conducive to a good night's sleep",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "disruption",
+        "tiếng việt": "gián đoạn",
+        "phiên âm": "/dɪsˈrʌpʃən/",
+        "câu ví dụ": "disruption of internet connection will make your app down",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "hamper",
+        "tiếng việt": "cản trở",
+        "phiên âm": "/ˈhæm.pər/",
+        "câu ví dụ": "their work is hampered by lack of funds",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "inconsiderately",
+        "tiếng việt": "không cẩn thận",
+        "phiên âm": "/ˌɪn.kənˈsɪd.ər.ət/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": "!= cautiously"
+    },
+    {
+        "tiếng anh": "lobby",
+        "tiếng việt": "sảnh đợi",
+        "phiên âm": "/ˈlɒb.i/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "move up",
+        "tiếng việt": "đi lên",
+        "phiên âm": "/muːv ʌp/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "open to",
+        "tiếng việt": "mở",
+        "phiên âm": "/ˈəʊ.pən tʊ/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "opt",
+        "tiếng việt": "(kén) chọn",
+        "phiên âm": "/ɒpt/ ",
+        "câu ví dụ": "consumers will opt for low-priced goods",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "scrutiny",
+        "tiếng việt": "xem xét kỹ lưỡng",
+        "phiên âm": "/ˈskruː.tɪ.ni/",
+        "câu ví dụ": "Her argument doesn't really stand up to scrutiny",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "appeal",
+        "tiếng việt": "kêu gọi, lời kêu gọi",
+        "phiên âm": "/əˈpiːl/",
+        "câu ví dụ": "He made an emotional appeal to voters",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "arrive",
+        "tiếng việt": "đến",
+        "phiên âm": "/əˈraɪv/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "compromise",
+        "tiếng việt": "thỏa hiệp",
+        "phiên âm": "/ˈkɒm.prə.maɪz/ ",
+        "câu ví dụ": "The government has said that there will be no compromise with terrorists",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "daringly",
+        "tiếng việt": "táo bạo",
+        "phiên âm": "/ˈdeə.rɪŋ/",
+        "câu ví dụ": "This house would have looked daringly modern when it was built",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "familiar",
+        "tiếng việt": "Thân quen",
+        "phiên âm": "/fəˈmɪl.i.ər/",
+        "câu ví dụ": "familiar face",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "guide",
+        "tiếng việt": "hướng dẫn",
+        "phiên âm": "/ɡaɪd/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "majority",
+        "tiếng việt": "số đông",
+        "phiên âm": "/məˈdʒɒr.ə.ti/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "mix",
+        "tiếng việt": "pha trộn",
+        "phiên âm": "/mɪks/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rely",
+        "tiếng việt": "phụ thuộc",
+        "phiên âm": "/rɪˈlɑɪ/",
+        "câu ví dụ": "The system relies too heavily on one person",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "secure",
+        "tiếng việt": "đảm bảo",
+        "phiên âm": "/sɪˈkjʊər/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "subjective",
+        "tiếng việt": "chủ quan",
+        "phiên âm": "/səbˈdʒek.tɪv/",
+        "câu ví dụ": "his views are highly subjective",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "suggestion",
+        "tiếng việt": "gợi ý",
+        "phiên âm": "/səˈdʒes.tʃən/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "agent",
+        "tiếng việt": "đặc vụ",
+        "phiên âm": "/ˈeɪ.dʒənt/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "announcement",
+        "tiếng việt": "sự thông báo",
+        "phiên âm": "/əˈnaʊns.mənt/",
+        "câu ví dụ": "The president made an unexpected announcement this morning",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "beverage",
+        "tiếng việt": "đồ uống",
+        "phiên âm": "/ˈbev.ər.ɪdʒ/",
+        "câu ví dụ": "Hot beverages include tea, coffee, and hot chocolate",
+        "từ đồng nghĩa": "drinks"
+    },
+    {
+        "tiếng anh": "blanket",
+        "tiếng việt": "cái mền",
+        "phiên âm": "/ˈblæŋ.kɪt/ ",
+        "câu ví dụ": "I slept on the ground covered by my blanket",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "board",
+        "tiếng việt": "bảng",
+        "phiên âm": "/bɔːd/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "claim",
+        "tiếng việt": "thừa nhận",
+        "phiên âm": "/kleɪm/",
+        "câu ví dụ": "The company claims (that) it is not responsible for the pollution in the river.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "delay",
+        "tiếng việt": "sự chậm trễ",
+        "phiên âm": "/dɪˈleɪ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "depart",
+        "tiếng việt": "khởi hành",
+        "phiên âm": "/dɪˈpɑːt/",
+        "câu ví dụ": "they departed for Germany",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "embarkation",
+        "tiếng việt": "Điểm bắt đầu",
+        "phiên âm": "/ˌem.bɑːˈkeɪ.ʃən/",
+        "câu ví dụ": "You'll be asked for those documents on embarkation",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "itinerary",
+        "tiếng việt": "hành trình",
+        "phiên âm": "/aɪˈtɪn.ər.ər.i/ ",
+        "câu ví dụ": "his itinerary included an official visit to Canada",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "prohibit",
+        "tiếng việt": "cấm",
+        "phiên âm": "/prəˈhɪb.ɪt/ ",
+        "câu ví dụ": "Motor vehicles are prohibited from driving in the town centre",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "valid",
+        "tiếng việt": "có hiệu lực",
+        "phiên âm": "/ˈvæl.ɪd/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "attainment",
+        "tiếng việt": "Thành tích",
+        "phiên âm": "/əˈteɪn.mənt/ ",
+        "câu ví dụ": "a young woman of impressive educational attainments",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "combine",
+        "tiếng việt": "hợp lại",
+        "phiên âm": "/kəmˈbaɪn/",
+        "câu ví dụ": "None of us has much money so let's combine what we've got",
+        "từ đồng nghĩa": "merge"
+    },
+    {
+        "tiếng anh": "continue",
+        "tiếng việt": "tiếp tục",
+        "phiên âm": "/kənˈtɪn.juː/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    }
+]
+var currentAnswer = "none"
+window.onload = load();
+function load() {
+    if (localStorage.getItem("randomNumber")) {
+        var rd = localStorage.getItem("randomNumber")
+    }else{
+        var rd = 1;
+    }
+    if (localStorage.getItem("phienam")) {
+        var phienam = localStorage.getItem("phienam")
+    }else{
+        var phienam = false;
+    }
+    
+    var word = vocabulary[rd]
+    e1.innerHTML = word["tiếng anh"].toUpperCase()
+    if (currentAnswer == "tv") {
+        e2.innerHTML = word["tiếng việt"]
+    }else if (currentAnswer == "vd") {
+        e2.innerHTML = word["câu ví dụ"]
+    }
+    else if (currentAnswer == "tdn") {
+        e2.innerHTML = word["từ đồng nghĩa"]
+    }else{
+        e2.innerHTML = " "
+    }
+    e3.innerHTML = word["phiên âm"]
+
+}
+
+function next() {
+    rd = Math.floor(Math.random() * 99); 
+    localStorage.setItem("randomNumber", rd)
+    location.reload();
+}
+function tv() {
+    currentAnswer = "tv"
+    load()
+}
+function vd() {
+    currentAnswer = "vd"
+    load()
+}
+function tdn() {
+    currentAnswer = "tdn"
+    load()
+}
+
+</script>
+
+</html>
