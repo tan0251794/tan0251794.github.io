@@ -1493,10 +1493,10 @@ function load() {
         e2.innerHTML = " "
     }
     e3.innerHTML = word["phiên âm"]
-
 }
 
 function next(){
+	currentAnswer = "none"
 	rd = Math.floor(Math.random() * 99); 
     localStorage.setItem("randomNumber", rd)
 	load()
@@ -1506,10 +1506,12 @@ function tv() {
     currentAnswer = "tv"
     load()
 }
+
 function vd() {
     currentAnswer = "vd"
     load()
 }
+
 function tdn() {
     currentAnswer = "tdn"
     load()
