@@ -22,17 +22,18 @@
 </style>
 
 <body>
+	<i><p id="currentVocabulary"></p></i>
     <div class="container center-edit">
         <div class="row">
             <h1 id="e1" class="col-12 height-100 mt-5"></h1>
             <br><br><br>
             <h5 id="e3" class="col-12 height-100" ></h5>
             <h3 id="e2" class="col-12 height-100"></h3>
-            <br><br><br><br><br><br>
             <div class="col-12">
                 <button class="btn btn-primary col-3 height-100" onclick="tv()">Đáp Án</button>
                 <button class="btn btn-primary col-3 height-100" onclick="vd()">Câu Ví Dụ</button>
                 <button class="btn btn-primary col-3 height-100" onclick="tdn()">Từ Đồng Nghĩa</button>
+				<button class="btn btn-primary col-2 height-100" onclick="change()">Đổi thư viện</button>
            </div><br><br><br>
             <button class="btn btn-success col-12 height-100 mt-1" onclick="next()">NEXT</button>
         </div>
@@ -53,7 +54,7 @@
 
 
 <script type="text/javascript" >
-const vocabulary = [
+const vocabulary1 = [
     {
         "tiếng anh": "abide by",
         "tiếng việt": "tuân thủ",
@@ -748,8 +749,725 @@ const vocabulary = [
         "từ đồng nghĩa": ""
     }
 ]
+vocabulary2 = [
+    {
+        "tiếng anh": "﻿description",
+        "tiếng việt": "sự miêu tả",
+        "phiên âm": "/dɪˈskrɪp.ʃən/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "disperse",
+        "tiếng việt": "phân tán",
+        "phiên âm": "/dɪˈspɜːs/",
+        "câu ví dụ": "By this time, the crowd had dispersed",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "entertainment",
+        "tiếng việt": "sự giải trí",
+        "phiên âm": "/en.təˈteɪn.mənt/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "influence",
+        "tiếng việt": "ảnh hưởng",
+        "phiên âm": "/ˈɪn.flu.əns/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "range",
+        "tiếng việt": "phạm vi",
+        "phiên âm": "/reɪndʒ/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "release",
+        "tiếng việt": "thả, phát hành",
+        "phiên âm": "/rɪˈliːs/ ",
+        "câu ví dụ": "He was released from prison yesterday",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "representation",
+        "tiếng việt": "đại diện",
+        "phiên âm": "/ˌrep.rɪ.zenˈteɪ.ʃən/",
+        "câu ví dụ": "the representation of women in newspapers",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "separately",
+        "tiếng việt": "riêng biệt",
+        "phiên âm": "/ˈsep.ər.ət.li/",
+        "câu ví dụ": "they arrived together but left separately",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "successive",
+        "tiếng việt": "liên tiếp",
+        "phiên âm": "/səkˈses.ɪv/",
+        "câu ví dụ": "He won the World Championship for the third successive year.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "annually",
+        "tiếng việt": "hàng năm",
+        "phiên âm": "/ˈæn.ju.ə.li/",
+        "câu ví dụ": "Your starting salary is £23,000 per annum and will be reviewed annually",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "appointment",
+        "tiếng việt": "cuộc hẹn",
+        "phiên âm": "/əˈpɔɪnt.mənt/ ",
+        "câu ví dụ": "I've got a two o'clock appointment with Ms Edwards",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "assess",
+        "tiếng việt": "đánh giá",
+        "phiên âm": "/əˈses/",
+        "câu ví dụ": " We need to assess whether the project is worth doing",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "diagnose",
+        "tiếng việt": "chẩn đoán",
+        "phiên âm": "/ˈdaɪ.əɡ.nəʊz/",
+        "câu ví dụ": "doctors diagnosed a rare disease",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "effective",
+        "tiếng việt": "có hiệu lực",
+        "phiên âm": "/ɪˈfek.tɪv/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "instrument",
+        "tiếng việt": "dụng cụ, nhạc cụ",
+        "phiên âm": "/ˈɪn.strə.mənt/ ",
+        "câu ví dụ": "Which instrument do you play?",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "manage",
+        "tiếng việt": "quản lý",
+        "phiên âm": "/ˈmæn.ɪdʒ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "prevent",
+        "tiếng việt": "ngăn chặn",
+        "phiên âm": "/prɪˈvent/ ",
+        "câu ví dụ": "The accident could have been prevented",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "recommendation",
+        "tiếng việt": "sự giới thiệu",
+        "phiên âm": "/ˌrek.ə.menˈdeɪ.ʃən/ ",
+        "câu ví dụ": "I bought this computer on John's recommendation",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "record",
+        "tiếng việt": "ghi lại",
+        "phiên âm": "/rɪˈkɔːd/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "refer",
+        "tiếng việt": "gọi, nói tới",
+        "phiên âm": "/rɪˈfɜːr/",
+        "câu ví dụ": "he was referred for evaluation and treatment",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "serious",
+        "tiếng việt": "nghiêm trọng",
+        "phiên âm": "/ˈsɪə.ri.əs/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "accommodate",
+        "tiếng việt": "chứa",
+        "phiên âm": "/əˈkɒm.ə.deɪt/ ",
+        "câu ví dụ": "the cabins accommodate up to 6 people",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "arrangement",
+        "tiếng việt": "sắp xếp",
+        "phiên âm": "/əˈreɪndʒ.mənt/",
+        "câu ví dụ": "They had made all the arrangements for the party",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "association",
+        "tiếng việt": "hiệp hội",
+        "phiên âm": "/əˌsəʊ.siˈeɪ.ʃən/",
+        "câu ví dụ": "The British Medical Association is/are campaigning for a complete ban on tobacco advertising.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "attend",
+        "tiếng việt": "tham gia",
+        "phiên âm": "/əˈtend/ ",
+        "câu ví dụ": "The meeting will on the fifth floor and we're hoping everyone will attend",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "get in touch",
+        "tiếng việt": "liên lạc",
+        "phiên âm": "/ɡet ɪn tʌtʃ/",
+        "câu ví dụ": "please get in touch with me",
+        "từ đồng nghĩa": "contact"
+    },
+    {
+        "tiếng anh": "hold",
+        "tiếng việt": "giữ",
+        "phiên âm": "/həʊld/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "location",
+        "tiếng việt": "vị trí",
+        "phiên âm": "/ləʊˈkeɪ.ʃən/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "overcrowded",
+        "tiếng việt": "quá đông",
+        "phiên âm": "/ˌəʊ.vəˈkraʊ.dɪd/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "register",
+        "tiếng việt": "Đăng ký",
+        "phiên âm": "/ˈredʒ.ɪ.stər/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "select",
+        "tiếng việt": "lựa chọn",
+        "phiên âm": "/sɪˈlekt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "session",
+        "tiếng việt": "phiên",
+        "phiên âm": "/ˈseʃ.ən/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "take part in",
+        "tiếng việt": "tham gia",
+        "phiên âm": "/teɪk pɑːt ɪn/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "assemble",
+        "tiếng việt": "tập hợp",
+        "phiên âm": "/əˈsem.bəl/",
+        "câu ví dụ": "a crowd had assembled outside the gates",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "beforehand",
+        "tiếng việt": "Tới trước",
+        "phiên âm": "/bɪˈfɔː.hænd/",
+        "câu ví dụ": "I knew she was coming that afternoon because she had phoned beforehand to say so.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "complication",
+        "tiếng việt": "sự phức tạp",
+        "phiên âm": "/ˌkɒm.plɪˈkeɪ.ʃən/",
+        "câu ví dụ": "Dave couldn't find his passport at the airport and then there were further complications when Fiona lost her baggage.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "courier",
+        "tiếng việt": "chuyển phát nhanh",
+        "phiên âm": "/ˈkʊr.i.ər/",
+        "câu ví dụ": "We sent the documents by courier",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "express",
+        "tiếng việt": "bày tỏ",
+        "phiên âm": "/ɪkˈspres/",
+        "câu ví dụ": "Customers expressed interest in trying the product",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fold",
+        "tiếng việt": "gập lại",
+        "phiên âm": "/fəʊld/",
+        "câu ví dụ": "The table folds up when not in use",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "layout",
+        "tiếng việt": "bố trí",
+        "phiên âm": "/ˈleɪ.aʊt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "mention",
+        "tiếng việt": "đề cập đến",
+        "phiên âm": "/ˈmen.ʃən/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "petition",
+        "tiếng việt": "kiến nghị",
+        "phiên âm": "/pəˈtɪʃ.ən/",
+        "câu ví dụ": "The workers are starting a petition for safer standards.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "proof",
+        "tiếng việt": "bằng chứng",
+        "phiên âm": "/pruːf/",
+        "câu ví dụ": "Keep your receipt as proof of purchase.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "register",
+        "tiếng việt": "Đăng ký",
+        "phiên âm": "/ˈredʒ.ɪ.stər/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "revise",
+        "tiếng việt": "xem lại",
+        "phiên âm": "/rɪˈvaɪz/",
+        "câu ví dụ": "I realised that I would have to revise my life plan",
+        "từ đồng nghĩa": "review"
+    },
+    {
+        "tiếng anh": "achievement",
+        "tiếng việt": "thành tựu",
+        "phiên âm": "/əˈtʃiːv.mənt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": "attainment, accomplishment"
+    },
+    {
+        "tiếng anh": "contribute",
+        "tiếng việt": "Góp phần",
+        "phiên âm": "/kənˈtrɪb.juːt/",
+        "câu ví dụ": "Her family has contributed $50,000 to the fund.",
+        "từ đồng nghĩa": "combine"
+    },
+    {
+        "tiếng anh": "dedication",
+        "tiếng việt": "cống hiến",
+        "phiên âm": "/ˌded.ɪˈkeɪ.ʃən/",
+        "câu ví dụ": "Mary has give $50,000 to the fund. this a great dedication",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "look forward to",
+        "tiếng việt": "trông mong",
+        "phiên âm": "/lʊk/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "look to",
+        "tiếng việt": "nhìn vào",
+        "phiên âm": "/lʊk/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "loyal",
+        "tiếng việt": "trung thành",
+        "phiên âm": "/ˈlɔɪ.əl/",
+        "câu ví dụ": "Golden is loyal dog",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "attract",
+        "tiếng việt": "thu hút",
+        "phiên âm": "/əˈtrækt/",
+        "câu ví dụ": "These flowers are brightly coloured in order to attract butterflies",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "compare",
+        "tiếng việt": "đối chiếu",
+        "phiên âm": "/kəmˈpeər/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "competition",
+        "tiếng việt": "cạnh tranh",
+        "phiên âm": "/ˌkɒm.pəˈtɪʃ.ən/ ",
+        "câu ví dụ": "There's a lot of competition between computer companies.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "consume",
+        "tiếng việt": "tiêu thụ",
+        "phiên âm": "/kənˈsjuːm/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "convince",
+        "tiếng việt": "thuyết phục",
+        "phiên âm": "/kənˈvɪns/",
+        "câu ví dụ": "It's useless trying to convince her, she doesn't need to lose any weight.",
+        "từ đồng nghĩa": "persuasion"
+    },
+    {
+        "tiếng anh": "currently",
+        "tiếng việt": "hiện tại",
+        "phiên âm": "/ˈkʌr.ənt.li/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fad",
+        "tiếng việt": "mốt, xu hướng",
+        "phiên âm": "/fæd/",
+        "câu ví dụ": "There was a fad for wearing ripped jeans a few years ago",
+        "từ đồng nghĩa": "trend"
+    },
+    {
+        "tiếng anh": "inspiration",
+        "tiếng việt": "cảm hứng",
+        "phiên âm": "/ˌɪn.spˈreɪ.ʃən/",
+        "câu ví dụ": "Mary had one of her flashes of inspiration",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "market",
+        "tiếng việt": "thị trường",
+        "phiên âm": "/ˈmɑː.kɪt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "persuasion",
+        "tiếng việt": "sự thuyết phục",
+        "phiên âm": "/pəˈsweɪ.ʒən/",
+        "câu ví dụ": "Monica needed plenty of persuasion before she actually left",
+        "từ đồng nghĩa": "convince"
+    },
+    {
+        "tiếng anh": "productive",
+        "tiếng việt": "năng suất",
+        "phiên âm": "/prəˈdʌk.tɪv/",
+        "câu ví dụ": "the most productive employees",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "satisfaction",
+        "tiếng việt": "sự thỏa mãn",
+        "phiên âm": "/ˌsæt.ɪsˈfæk.ʃən/ ",
+        "câu ví dụ": "he smiled with satisfaction",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "affordable",
+        "tiếng việt": "giá cả phải chăng",
+        "phiên âm": "/əˈfɔː.də.bəl/",
+        "câu ví dụ": "affordable housing",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "as needed",
+        "tiếng việt": "khi cần",
+        "phiên âm": "/ˈniː.dɪd/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "be in charge of",
+        "tiếng việt": "chịu trách nhiệm",
+        "phiên âm": "/tʃɑːdʒ/",
+        "câu ví dụ": "The teacher put me in charge of the project",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "capacity",
+        "tiếng việt": "sức chứa",
+        "phiên âm": "/kəˈpæs.ə.ti/",
+        "câu ví dụ": "The stadium has a seating capacity of 50,000.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "durable",
+        "tiếng việt": "bền chặt",
+        "phiên âm": "/ˈdʒʊə.rə.bəl/ ",
+        "câu ví dụ": "The machines have to be made of durable materials",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "initiative",
+        "tiếng việt": "sáng kiến",
+        "phiên âm": "/ɪˈnɪʃ.ə.tɪv/ ",
+        "câu ví dụ": "a government initiative to combat unemployment",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "physically",
+        "tiếng việt": "thể chất",
+        "phiên âm": "/ˈfɪz.ɪ.kəl.i/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "provider",
+        "tiếng việt": "các nhà cung cấp",
+        "phiên âm": "/prəˈvaɪ.dər/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "recur",
+        "tiếng việt": "tái phát, lặp lại",
+        "phiên âm": "/rɪˈkɜːr/",
+        "câu ví dụ": "This theme recurs several times throughout the book",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reduction",
+        "tiếng việt": "sự giảm",
+        "phiên âm": "/rɪˈdʌk.ʃən/",
+        "câu ví dụ": "There has been some reduction in unemployment.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "stay on top of",
+        "tiếng việt": "ở trên đỉnh của",
+        "phiên âm": "/steɪ/",
+        "câu ví dụ": "stay on top of pyramid",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "stock",
+        "tiếng việt": "cổ phần",
+        "phiên âm": "/stɒk/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "ability",
+        "tiếng việt": "có khả năng",
+        "phiên âm": "/əˈbɪl.ə.ti/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "apply",
+        "tiếng việt": "ứng dụng",
+        "phiên âm": "/əˈplaɪ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "background",
+        "tiếng việt": "lý lịch",
+        "phiên âm": "/ˈbæk.ɡraʊnd/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "be ready for",
+        "tiếng việt": "sẵn sàng cho",
+        "phiên âm": "/biː ˈred.i fɔːr/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "call in",
+        "tiếng việt": "gọi trong",
+        "phiên âm": "/ˈkɔːl.ɪn/ ",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "confidence",
+        "tiếng việt": "sự tự tin",
+        "phiên âm": "/ˈkɒn.fɪ.dəns/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "constantly",
+        "tiếng việt": "liên tục",
+        "phiên âm": "/ˈkɒn.stənt.li/",
+        "câu ví dụ": "the world is constantly changing",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "expert",
+        "tiếng việt": "chuyên gia",
+        "phiên âm": "/ˈek.spɜːt/",
+        "câu ví dụ": "a financial expert",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "follow up",
+        "tiếng việt": "theo sát",
+        "phiên âm": "/ˈfɒl.əʊ.ʌp/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "hesitant",
+        "tiếng việt": "do dự",
+        "phiên âm": "/ˈhez.ɪ.tənt/",
+        "câu ví dụ": "You seemed a bit hesitant about recommending that restaurant - is something wrong with it?",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "present",
+        "tiếng việt": "hiện tại",
+        "phiên âm": "/ˈprez.ənt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "weakly",
+        "tiếng việt": "yếu đuối",
+        "phiên âm": "/ˈwiːk.li/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "diversify",
+        "tiếng việt": "đa dạng hóa",
+        "phiên âm": "/daɪˈvɜː.sɪ.faɪ/",
+        "câu ví dụ": "Farmers are being encouraged to diversify into new crops.",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "enterprise",
+        "tiếng việt": "doanh nghiệp",
+        "phiên âm": "/ˈen.tə.praɪz/",
+        "câu ví dụ": "a joint enterprise between French and Japanese companies",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "essentially",
+        "tiếng việt": "bản chất",
+        "phiên âm": "/ɪˈsen.ʃəl.i/",
+        "câu ví dụ": "What he's saying is essentially true",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "everyday",
+        "tiếng việt": "Hằng ngày",
+        "phiên âm": "/ˈev.ri.deɪ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "function",
+        "tiếng việt": "chức năng",
+        "phiên âm": "/ˈfʌŋk.ʃən/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "maintain",
+        "tiếng việt": "duy trì",
+        "phiên âm": "/meɪnˈteɪn/",
+        "câu ví dụ": "The two countries have always maintained close relations",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "obtain",
+        "tiếng việt": "đạt được",
+        "phiên âm": "/əbˈteɪn/",
+        "câu ví dụ": "I've been trying to obtain permission to publish this material",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "prerequisite",
+        "tiếng việt": "điều kiện tiên quyết",
+        "phiên âm": "/ˌpriːˈrek.wɪ.zɪt/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "quality",
+        "tiếng việt": "chất lượng",
+        "phiên âm": "/ˈkwɒl.ə.ti/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "smooth",
+        "tiếng việt": "trơn tru",
+        "phiên âm": "/smuːð/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "source",
+        "tiếng việt": "nguồn",
+        "phiên âm": "/sɔːs/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "stationery",
+        "tiếng việt": "văn phòng phẩm",
+        "phiên âm": "/ˈsteɪ.ʃən.ər.i/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "accounting",
+        "tiếng việt": "kế toán",
+        "phiên âm": "/əˈkaʊn.tɪŋ/",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    }
+]
+var vocabulary = vocabulary1;
+var currentVocabulary = 1;
+document.getElementById("currentVocabulary").innerHTML = "Current Vocabulary Database: "+currentVocabulary;
+
+function change(){
+	if (vocabulary === vocabulary1){
+		currentVocabulary = 2;
+		vocabulary = vocabulary2;
+	}else{
+		currentVocabulary = 1;
+		vocabulary = vocabulary1
+	}
+	document.getElementById("currentVocabulary").innerHTML = "Current Vocabulary Database: "+currentVocabulary;
+	next()
+}
 var currentAnswer = "none"
-window.onload = load();
+
 function load() {
     if (localStorage.getItem("randomNumber")) {
         var rd = localStorage.getItem("randomNumber")
@@ -778,11 +1496,12 @@ function load() {
 
 }
 
-function next() {
-    rd = Math.floor(Math.random() * 99); 
+function next(){
+	rd = Math.floor(Math.random() * 99); 
     localStorage.setItem("randomNumber", rd)
-    location.reload();
+	load()
 }
+
 function tv() {
     currentAnswer = "tv"
     load()
