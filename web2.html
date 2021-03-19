@@ -1,0 +1,3541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>học tiếng anh</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<style>
+    .center-edit {
+        justify-content: center;
+        text-align: center;
+        left: auto;
+        right: auto;
+    }
+
+    .height-100 {
+        height: 70px;
+    }
+</style>
+
+<body>
+	<i><p id="currentVocabulary"></p></i>
+    <div class="container center-edit">
+        <div class="row">
+            <h1 id="e1" class="col-12 height-100 mt-5"></h1>
+            <br><br><br>
+            <!-- <h5 id="e3" class="col-12 height-100" ></h5> -->
+            <h3 id="e2" class="col-12 height-100"></h3>
+			<br><br><br>
+			<br><br><br>
+            <div class="col-12">
+                <button class="btn btn-primary col-6 height-100" onclick="tv()">Đáp Án</button>
+           </div><br><br><br>
+            <button class="btn btn-success col-12 height-100 mt-1" onclick="next()">NEXT</button>
+        </div>
+    </div>
+    <div id="data">
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" >
+const vocabulary = [
+    {
+        "tiếng anh": "﻿advertising campaign",
+        "tiếng việt": "quảng cáo, chiến dịch",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "bank account",
+        "tiếng việt": "ngân hàng, tài khoản",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "bank balance",
+        "tiếng việt": "ngân hàng, số dư",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "bank charges",
+        "tiếng việt": "ngân hàng, thanh toán",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "bank statement",
+        "tiếng việt": "ngân hàng, sao kê",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "brand awareness",
+        "tiếng việt": "thương hiệu, nhận thức",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "brand loyalty",
+        "tiếng việt": "thương hiệu, sự trung thành",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "business opportunity",
+        "tiếng việt": "kinh doanh, cơ hội",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "business partner",
+        "tiếng việt": "kinh doanh, đối tác",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "business plan",
+        "tiếng việt": "kinh doanh, kế hoạch",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "business trip",
+        "tiếng việt": "kinh doanh, chuyến đi (công tác)",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "chain store",
+        "tiếng việt": "chuỗi, cửa hàng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "company policy",
+        "tiếng việt": "công ty, chính sách",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "consumer confidence",
+        "tiếng việt": "khách hàng, sự tự tin",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "credit crunch",
+        "tiếng việt": "tín dụng, sự thu hẹp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "credit history",
+        "tiếng việt": "tín dụng, lịch sử",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "customer satisfaction",
+        "tiếng việt": "khách hàng, sự hài lòng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "customer service",
+        "tiếng việt": "khách hàng, dịch vụ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "human resources",
+        "tiếng việt": "nhân, nguồn lực",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "interest rates",
+        "tiếng việt": "mối quan tâm, tỷ lệ (dịch là lãi suất)",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "job satisfaction",
+        "tiếng việt": "công việc, thoả mãn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "market forces",
+        "tiếng việt": "thị trường, đội ngũ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "market leader",
+        "tiếng việt": "thị trường, người dẫn đầu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "market share",
+        "tiếng việt": "thị trường, thị phần",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "material goods",
+        "tiếng việt": "vật chất, cụ thể, hàng hoá hữu hình",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "material possessions",
+        "tiếng việt": "vật chất, cụ thể, sở hữu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "material rewards",
+        "tiếng việt": "vật chất, cụ thể, thù lao",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "material wealth",
+        "tiếng việt": "vật chất, cụ thể, sự giàu có",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "product range",
+        "tiếng việt": "hàng hoá, loại, phạm vi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "profit margin",
+        "tiếng việt": "lợi nhuận, ròng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "quality control",
+        "tiếng việt": "chất lượng, kiểm soát",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "sales figures",
+        "tiếng việt": "bán hàng, doanh số",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "sales representative",
+        "tiếng việt": "bán hàng, đại diện",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "target audience",
+        "tiếng việt": "mục tiêu, khán giả",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "target market",
+        "tiếng việt": "mục tiêu, thị trường",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "annual insurance",
+        "tiếng việt": "thường niên, bảo hiểm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "annual leave",
+        "tiếng việt": "thường niên, nghỉ phép",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "annual return",
+        "tiếng việt": "thường niên, thống kê",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "annual turnover",
+        "tiếng việt": "thường niên, doanh thu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "careful analysis",
+        "tiếng việt": "cẩn thận, bản phân tích",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "careful consideration",
+        "tiếng việt": "cẩn thận, sự xem xét",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "careful timing",
+        "tiếng việt": "cẩn thận, căn thời gian",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "commercial bank",
+        "tiếng việt": "tư nhân, ngân hàng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "commercial mortgage",
+        "tiếng việt": "tư nhân, cầm cố",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "commercial property",
+        "tiếng việt": "tư nhân, tài sản",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "corporate culture",
+        "tiếng việt": "doanh nghiệp, văn hoá",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "corporate identify",
+        "tiếng việt": "doanh nghiệp, nhận diện",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "corporate image",
+        "tiếng việt": "doanh nghiệp, hình ảnh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "corporate strategy",
+        "tiếng việt": "doanh nghiệp, chiến lược",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "corporate structure",
+        "tiếng việt": "doanh nghiệp, cấu trúc",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "detailed account",
+        "tiếng việt": "chi tiết, tài khoản",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "detailed analysis",
+        "tiếng việt": "chi tiết, sự phân tích",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "detailed investigation",
+        "tiếng việt": "chi tiết, sự điều nghiên",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "detailed study",
+        "tiếng việt": "chi tiết, bản nghiên cứu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "direct intervention",
+        "tiếng việt": "trực tiếp, can thiệp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "direct involvement",
+        "tiếng việt": "trực tiếp, dính dáng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "due care",
+        "tiếng việt": "thích hợp, thích đáng, sự quan tâm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "due consideration",
+        "tiếng việt": "thích hợp, thích đáng, sự xem xét",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "due notice",
+        "tiếng việt": "thích hợp, thích đáng, chú ý",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "due respect",
+        "tiếng việt": "thích hợp, thích đáng, tôn trọng (dùng để phản đối)",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "economic crisis",
+        "tiếng việt": "kinh tế, khủng hoảng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "economic downturn",
+        "tiếng việt": "kinh tế, suy sụp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "economic growth",
+        "tiếng việt": "kinh tế, tăng trưởng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "economic policy",
+        "tiếng việt": "kinh tế, chính sách",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "economic reform",
+        "tiếng việt": "kinh tế, đổi mới",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "economic slowdown",
+        "tiếng việt": "kinh tế, giảm tốc độ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "effective deterrent",
+        "tiếng việt": "hiệu quả, sự ngăn trở",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "effective means",
+        "tiếng việt": "hiệu quả, phương pháp, phương tiện",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "effective protection",
+        "tiếng việt": "hiệu quả, sự bảo vệ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "effective treatment",
+        "tiếng việt": "hiệu quả, điều trị",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "emergency meeting",
+        "tiếng việt": "khẩn cấp, cu ộc họp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "emergency service",
+        "tiếng việt": "khẩn cấp, dịch vụ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "FALSE allegation",
+        "tiếng việt": "sai, lời cáo buộc",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "FALSE assumption",
+        "tiếng việt": "sai, giả thuyết",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "FALSE hope",
+        "tiếng việt": "sai, hy vọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "FALSE impression",
+        "tiếng việt": "sai, sự ấn tượng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "FALSE premise",
+        "tiếng việt": "sai, tiền đề",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "firm belief",
+        "tiếng việt": "chắc chắn, sự tin tưởng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "firm conviction",
+        "tiếng việt": "chắc chắn, lời kết tội, kết án",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "general conclusion",
+        "tiếng việt": "chung, kết luận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "general consensus",
+        "tiếng việt": "chung, đồng thuận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "general principle",
+        "tiếng việt": "chung, nguyên lý",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "general rule",
+        "tiếng việt": "chung, quy tắc",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "growing awareness",
+        "tiếng việt": "đang tăng, sự nhận thức",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "growing concern",
+        "tiếng việt": "đang tăng, mối quan ngại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "growing discontent",
+        "tiếng việt": "đang tăng, sự bất mãn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "growing tension",
+        "tiếng việt": "đang tăng, căng thẳng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "growing unrest",
+        "tiếng việt": "đang tăng, sự náo loạn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "hard bargain",
+        "tiếng việt": "cứng, đàm phán",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "heavy fine",
+        "tiếng việt": "nhiều, tiền phạt",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "heavy losses",
+        "tiếng việt": "nhiều, tổn thất",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "heavy rain",
+        "tiếng việt": "nhiều, mưa",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "heavy snow",
+        "tiếng việt": "nhiều, tuyết",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "heavy traffic",
+        "tiếng việt": "nhiều, giao thông",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "high cost",
+        "tiếng việt": "cao, chi phí",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "high expectations",
+        "tiếng việt": "cao, kỳ vọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "high hopes",
+        "tiếng việt": "cao, hy vọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "high proportion",
+        "tiếng việt": "cao, phần",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "high quality",
+        "tiếng việt": "cao, chất lượng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "high speed",
+        "tiếng việt": "cao, tốc độ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "high standard",
+        "tiếng việt": "cao, tiêu chuẩn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "key element",
+        "tiếng việt": "chính, yếu tố",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "key factor",
+        "tiếng việt": "chính, yếu tố",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "key feature",
+        "tiếng việt": "chính, đặc điểm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "key figure",
+        "tiếng việt": "chính, nhân vật",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "key role",
+        "tiếng việt": "chính, vai trò",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "major breakthrough",
+        "tiếng việt": "chính, đột phá",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "major concern",
+        "tiếng việt": "chính, quan ngại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "major factor",
+        "tiếng việt": "chính, yếu tố",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "major influence",
+        "tiếng việt": "chính, sự ảnh hưởng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "major setback",
+        "tiếng việt": "chính, sự giảm sút",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "major upheaval",
+        "tiếng việt": "chính, sự biến động",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "mutual benefit",
+        "tiếng việt": "qua lại, lẫn nhau, lợi ích",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "mutual respect",
+        "tiếng việt": "qua lại, lẫn nhau, tôn trọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "mutual trust",
+        "tiếng việt": "qua lại, lẫn nhau, tin tưởng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "noticeable change",
+        "tiếng việt": "đáng chú ý, sự thay đổi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "noticeable difference",
+        "tiếng việt": "đáng chú ý, sự khác biệt",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "noticeable drop",
+        "tiếng việt": "đáng chú ý, sự giảm sút",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "noticeable improvement",
+        "tiếng việt": "đáng chú ý, sự cải thiện",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "outstanding achievement",
+        "tiếng việt": "nổi bật, xuất sắc, thành t ựu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "outstanding result",
+        "tiếng việt": "nổi bật, xuất sắc, kết quả",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "particular attention",
+        "tiếng việt": "đặc thù, cá biệt, mối quan tâm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "particular concern",
+        "tiếng việt": "đặc thù, cá biệt, quan ngại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "particular emphasis",
+        "tiếng việt": "đặc thù, cá biệt, sự nhấn mạnh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "particular relevance",
+        "tiếng việt": "đặc thù, cá biệt, sự xác đáng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "popular belief",
+        "tiếng việt": "phổ biến, niềm tin",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "popular misconception",
+        "tiếng việt": "phổ biến, quan niệm sai lầm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "popular myth",
+        "tiếng việt": "phổ biến, thần thoại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "popular view",
+        "tiếng việt": "phổ biến, cách nhìn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "positive attitude",
+        "tiếng việt": "tích cực, thái độ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "positive feedback",
+        "tiếng việt": "tích cực, phản hồi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "positive reinforcement",
+        "tiếng việt": "tích cực, sự củng cố",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "positive response",
+        "tiếng việt": "tích cực, phản hồi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "practical advice",
+        "tiếng việt": "thực tế, lời khuyên",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "practical purpose",
+        "tiếng việt": "thực tế, mục đích",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "practical solution",
+        "tiếng việt": "thực tế, giải pháp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rapid change",
+        "tiếng việt": "nhanh, sự thay đổi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rapid decline",
+        "tiếng việt": "nhanh, sự giảm sút",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rapid deterioration",
+        "tiếng việt": "nhanh, hư hỏng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rapid expansion",
+        "tiếng việt": "nhanh, mở rộng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "realistic alternative",
+        "tiếng việt": "thực tế, phương án dự trù",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "realistic expectation",
+        "tiếng việt": "thực tế, kỳ vọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "realistic prospect",
+        "tiếng việt": "thực tế, viễn cảnh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "realistic target",
+        "tiếng việt": "thực tế, mục tiêu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reliable indication",
+        "tiếng việt": "đáng tin cậy, dấu hiệu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reliable measure",
+        "tiếng việt": "đáng tin cậy, phương án",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reliable predictor",
+        "tiếng việt": "đáng tin cậy, nhà dự báo",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rising trend",
+        "tiếng việt": "tăng, xu hướng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rising unemployment",
+        "tiếng việt": "tăng, số lượng thất nghiệp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "severe difficulty",
+        "tiếng việt": "nghiêm trọng, sự khó khăn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "severe hardship",
+        "tiếng việt": "nghiêm trọng, sự khó khăn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "severe setback",
+        "tiếng việt": "nghiêm trọng, sự giảm sút",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "severe shortage",
+        "tiếng việt": "nghiêm trọng, sự thiếu hụt",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "sound advice",
+        "tiếng việt": "hợp lý, sáng suốt, lời khuyên",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "sound decision",
+        "tiếng việt": "hợp lý, sáng suốt, quyết định",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "sound judgment",
+        "tiếng việt": "hợp lý, sáng suốt, lời đánh giá",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "sound principle",
+        "tiếng việt": "hợp lý, sáng suốt, nguyên lý",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "tough assignment",
+        "tiếng việt": "khó khăn, nhiệm vụ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "tough call",
+        "tiếng việt": "khó khăn, lựa chọn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "tough decision",
+        "tiếng việt": "khó khăn, quyết định",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "tough flight",
+        "tiếng việt": "khó khăn, chuyến bay",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "vague hint",
+        "tiếng việt": "mơ hồ, gợi ý",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "vague idea",
+        "tiếng việt": "mơ hồ, ý tưởng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "vague impression",
+        "tiếng việt": "mơ hồ, ấn tượng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "vague memory",
+        "tiếng việt": "mơ hồ, ký ức",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "vague recollection",
+        "tiếng việt": "mơ hồ, ký ức",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "vague suspicion",
+        "tiếng việt": "mơ hồ, sự ngờ vực",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "apply for a grant",
+        "tiếng việt": "xin, tài trợ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "apply for a loan",
+        "tiếng việt": "xin, vay",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "apply for a permission",
+        "tiếng việt": "xin, phép",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "apply for a rebate",
+        "tiếng việt": "xin, giảm giá",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "attend a conference",
+        "tiếng việt": "tham dự, hội nghị",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "attend a function",
+        "tiếng việt": "tham dự, buổi họp mặt quan trọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "cause alarm",
+        "tiếng việt": "gây ra, báo động",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "cause concern",
+        "tiếng việt": "gây ra, quan ngại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "cause damage",
+        "tiếng việt": "gây ra, thiệt hại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "cause problems",
+        "tiếng việt": "gây ra, vấn đề",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "cause trouble",
+        "tiếng việt": "gây ra, vấn đề",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "chair a committee",
+        "tiếng việt": "làm chủ toạ, uỷ ban",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "chair a meeting",
+        "tiếng việt": "làm chủ toạ, cuộc họp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "close a deal",
+        "tiếng việt": "chốt, thương vụ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "close a gap",
+        "tiếng việt": "chốt, khoảng trống",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "close a sale",
+        "tiếng việt": "chốt, đợt giảm giá",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "close ranks",
+        "tiếng việt": "hỗ trợ, đồng nghiệp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "conclude an agreement",
+        "tiếng việt": "bao gồm, hợp đồng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "conclude a contract",
+        "tiếng việt": "bao gồm, hợp đồng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "conclude a deal",
+        "tiếng việt": "bao gồm, thương vụ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "conclude a treaty",
+        "tiếng việt": "bao gồm, hiệp ước",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deserve credit",
+        "tiếng việt": "xứng đáng được, [lời] khen ngợi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deserve praise",
+        "tiếng việt": "xứng đáng được, [lời] khen ngợi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deserve recognition",
+        "tiếng việt": "xứng đáng được, [sự] công nhận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deserve respect",
+        "tiếng việt": "xứng đáng được, [sự] tôn trọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "discontinue a line",
+        "tiếng việt": "không tiếp tục, dòng sản phẩm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "discontinue a product",
+        "tiếng việt": "không tiếp tục, sản phẩm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "dismiss an allegation",
+        "tiếng việt": "bác bỏ, cáo buộc",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "a claim a claim",
+        "tiếng việt": "[lời] yêu cầu, [lời] yêu cầu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "an offer an offer",
+        "tiếng việt": "[lời] đề nghị, [lời] đề nghị",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "a suggestion a suggestion",
+        "tiếng việt": "[sự] gợi ý, [sự] gợi ý",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "draw attention to",
+        "tiếng việt": "thu hút, sự chú ý",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "draw a conclusion",
+        "tiếng việt": "đưa ra, kết luận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "express concern",
+        "tiếng việt": "bày tỏ, mối quan ngại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "frustration frustration",
+        "tiếng việt": "sự thất vọng, sự thất vọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "a view a view",
+        "tiếng việt": "quan điểm, quan điểm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fight a battle",
+        "tiếng việt": "đấu tranh, [trong] cuộc chiến",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "corruption corruption",
+        "tiếng việt": "[chống] tham nhũng, [chống] tham nhũng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "crime crime",
+        "tiếng việt": "[chống] tội phạm, [chống] tội phạm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "discrimination discrimination",
+        "tiếng việt": "[chống] phân biệt đối xử, [chống] phân biệt đối xử",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "prejudice prejudice",
+        "tiếng việt": "[chống] định kiến, [chống] định kiến",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "file for bankruptcy",
+        "tiếng việt": "nộp đơn, đâm đơn, phá sản",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "for divorce for divorce",
+        "tiếng việt": "ly hôn, ly hôn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "gain acceptance",
+        "tiếng việt": "nhận được, đạt được, sự chấp thuận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "gain an advantage",
+        "tiếng việt": "nhận được, đạt được, sự thuận lợi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "gain confidence",
+        "tiếng việt": "nhận được, đạt được, sự tự tin",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "gain entry",
+        "tiếng việt": "nhận được, đạt được, đầu vào",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "gain popularity",
+        "tiếng việt": "nhận được, đạt được, sự ưa thích [của công chúng]",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "gain speed",
+        "tiếng việt": "nhận được, đạt được, tốc độ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "gain recognition",
+        "tiếng việt": "nhận được, đạt được, sự công nhận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "grow impatient",
+        "tiếng việt": "mất, kiên nhẫn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "grow restless",
+        "tiếng việt": "mất, tập trung",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "grow tired of",
+        "tiếng việt": "mất, phát chán về",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "hold a conference",
+        "tiếng việt": "tổ chức, hội nghị",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "hold an election",
+        "tiếng việt": "tổ chức, bầu cử",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "hold an inquiry",
+        "tiếng việt": "tổ chức, thẩm tra",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "hold a meeting",
+        "tiếng việt": "tổ chức, cuộc họp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "hold a rally",
+        "tiếng việt": "tổ chức, mít-tinh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "hold a party",
+        "tiếng việt": "tổ chức, bữa tiệc",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "honor a contract",
+        "tiếng việt": "làm theo, hợp đồng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "honor an obligation",
+        "tiếng việt": "làm theo, nghĩa vụ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "issue an apology",
+        "tiếng việt": "đưa ra, lời xin lỗi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "issue an injunction",
+        "tiếng việt": "đưa ra, sự cảnh báo",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "issue a statement",
+        "tiếng việt": "đưa ra, lời tuyên bố",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "issue an ultimatum",
+        "tiếng việt": "đưa ra, tối hậu thư",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "issue a warning",
+        "tiếng việt": "đưa ra, cảnh báo",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "join a club",
+        "tiếng việt": "gia nhập, câu lạc bộ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "join forces",
+        "tiếng việt": "gia nhập, lực lượng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "join a union",
+        "tiếng việt": "gia nhập, công đoàn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "launch a campaign",
+        "tiếng việt": "bắt đầu, mở, chiến dịch",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "launch an initiative",
+        "tiếng việt": "bắt đầu, mở, sự khởi nguồn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "launch an investigation",
+        "tiếng việt": "bắt đầu, mở, cuộc điều tra",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "launch a product",
+        "tiếng việt": "bắt đầu, mở, sản phẩm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "lead a discussion",
+        "tiếng việt": "dẫn dắt, cuộc thảo luận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "limit the amount",
+        "tiếng việt": "giới hạn, số lượng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "limit capacity",
+        "tiếng việt": "giới hạn, công suất",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "limit growth",
+        "tiếng việt": "giới hạn, sự phát triển",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "limit scope",
+        "tiếng việt": "giới hạn, phạm vi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "meet expectations",
+        "tiếng việt": "đáp ứng, kỳ vọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "meet the needs",
+        "tiếng việt": "đáp ứng, nhu cầu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "meet wishes",
+        "tiếng việt": "đáp ứng, lòng mong muốn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "meet the deadline",
+        "tiếng việt": "đáp ứng, trước hạn cuối",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "negotiate a deal",
+        "tiếng việt": "đàm phán, thương vụ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "negotiate a settlement",
+        "tiếng việt": "đàm phán, vụ hoà giải",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "negotiate terms",
+        "tiếng việt": "đàm phán, điều khoản",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "negotiate a treaty",
+        "tiếng việt": "đàm phán, hiệp ước",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "overcome adversity",
+        "tiếng việt": "vượt qua, xử lý, khó khăn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "overcome obstacles",
+        "tiếng việt": "vượt qua, xử lý, khó khăn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "overcome problems",
+        "tiếng việt": "vượt qua, xử lý, vấn đề",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "overcome resistance",
+        "tiếng việt": "vượt qua, xử lý, sự chống cự",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pay dearly for",
+        "tiếng việt": "trả giá, rất cao cho cái gì đó",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pay dividends",
+        "tiếng việt": "trả giá, cổ tức",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pay a fine",
+        "tiếng việt": "trả giá, tiền phạt",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pay your respects to",
+        "tiếng việt": "dành, sự tôn trọng cho",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pay interest",
+        "tiếng việt": "dành, sự quan tâm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pay tribute to",
+        "tiếng việt": "dành, lời khen ngợi cho",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pay a compliment",
+        "tiếng việt": "dành, lời khen ngợi cho",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "postpone an engagement",
+        "tiếng việt": "hoãn, cuộc họp, cuộc gặp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "postpone a meeting",
+        "tiếng việt": "hoãn, cuộc họp, cuộc gặp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "postpone a trip",
+        "tiếng việt": "hoãn, chuyến đi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "propose an idea",
+        "tiếng việt": "kiến nghị, ý kiến",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "propose a plan",
+        "tiếng việt": "kiến nghị, kế hoạch",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "propose reform",
+        "tiếng việt": "kiến nghị, thay đổi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "propose a solution",
+        "tiếng việt": "kiến nghị, giải pháp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pursue an ambition",
+        "tiếng việt": "theo đuổi, hoài bão",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pursue a career",
+        "tiếng việt": "theo đuổi, sự nghiệp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pursue a goal",
+        "tiếng việt": "theo đuổi, mục tiêu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pursue an objective",
+        "tiếng việt": "theo đuổi, mục tiêu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "pursue a policy",
+        "tiếng việt": "theo đuổi, chính sách",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reach an agreement",
+        "tiếng việt": "đạt đến, đạt tới, sự đồng thuận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reach an compromise",
+        "tiếng việt": "đạt đến, đạt tới, sự thoả hiệp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reach a conclusion",
+        "tiếng việt": "đạt đến, đạt tới, kết luận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reach a decision",
+        "tiếng việt": "đạt đến, đạt tới, quyết định",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reach a limit",
+        "tiếng việt": "đạt đến, đạt tới, giới hạn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reach a verdict",
+        "tiếng việt": "đạt đến, đạt tới, phán quyết",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "register a complaint",
+        "tiếng việt": "bày tỏ, sự phàn nàn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "register concern",
+        "tiếng việt": "bày tỏ, quan ngại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "register displeasure",
+        "tiếng việt": "bày tỏ, sự bất mãn, phản đối",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "register an objection",
+        "tiếng việt": "bày tỏ, sự bất mãn, phản đối",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "register a protest",
+        "tiếng việt": "bày tỏ, sự bất mãn, phản đối",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "secure payment",
+        "tiếng việt": "bảo đảm, sự thanh toán",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "secure permission",
+        "tiếng việt": "bảo đảm, sự cho phép",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "secure a seat",
+        "tiếng việt": "bảo đảm, chỗ ngồi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "settle a debt",
+        "tiếng việt": "giải quyết, món nợ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "settle an argument",
+        "tiếng việt": "giải quyết, tranh chấp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "settle your differences",
+        "tiếng việt": "giải quyết, tranh chấp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "settle a disagreement",
+        "tiếng việt": "giải quyết, tranh chấp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "settle a dispute",
+        "tiếng việt": "giải quyết, tranh chấp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "suffer a defeat",
+        "tiếng việt": "chịu đựng, thất bại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "suffer a loss",
+        "tiếng việt": "chịu đựng, thất bại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "suffer a setback",
+        "tiếng việt": "chịu đựng, khó khăn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "support an argument",
+        "tiếng việt": "ủng hộ, lý lẽ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "support a claim",
+        "tiếng việt": "ủng hộ, sự xác nhận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "support a contention",
+        "tiếng việt": "ủng hộ, cáo buộc",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "support a hypothesis",
+        "tiếng việt": "ủng hộ, giả thuyết",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "tackle a challenge",
+        "tiếng việt": "giải quyết, thách thức",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "tackle a crisis",
+        "tiếng việt": "giải quyết, khủng hoảng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "tackle a problem",
+        "tiếng việt": "giải quyết, vấn đề",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "tackle a question",
+        "tiếng việt": "giải quyết, câu hỏi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "tackle a task",
+        "tiếng việt": "giải quyết, việc",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "undermine authority",
+        "tiếng việt": "phá hoại, danh dự",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "undermine confidence",
+        "tiếng việt": "mất, tự tin",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "undermine credibility",
+        "tiếng việt": "giảm, tín nhiệm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "undermine legitimacy",
+        "tiếng việt": "thiếu, chính đáng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "undermine morale",
+        "tiếng việt": "xói mòn, đạo đức",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "voice concern",
+        "tiếng việt": "lên tiếng bày tỏ, quan ngại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "voice doubts",
+        "tiếng việt": "lên tiếng bày tỏ, sự nghi ngờ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "voice misgivings",
+        "tiếng việt": "lên tiếng bày tỏ, sự lo âu, hoài nghi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "withstand pressure",
+        "tiếng việt": "chống cự, áp lực",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "agree completely",
+        "tiếng việt": "đồng ý, hoàn toàn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "agree reluctantly",
+        "tiếng việt": "đồng ý, một cách ngần ngại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "agree unanimously",
+        "tiếng việt": "đồng ý, một cách ngần ngại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "agree unreservedly",
+        "tiếng việt": "đồng ý, nhất trí",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "approve thoroughly",
+        "tiếng việt": "đồng ý, cẩn thận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "approve wholeheartedly",
+        "tiếng việt": "đồng ý, hết lòng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "argue forcefully",
+        "tiếng việt": "tranh cãi, mạnh mẽ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "argue passionately",
+        "tiếng việt": "tranh cãi, mạnh mẽ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "argue persuasively",
+        "tiếng việt": "tranh cãi, một cách thuyết phục",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "argue strongly",
+        "tiếng việt": "tranh cãi, nghiêm túc",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "borrow heavily",
+        "tiếng việt": "mượn, nhiều [tiền]",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "change dramatically",
+        "tiếng việt": "thay đổi, đột ngột",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "change drastically",
+        "tiếng việt": "thay đổi, mạnh mẽ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "change fundamentally",
+        "tiếng việt": "thay đổi, về cơ bản",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "change rapidly",
+        "tiếng việt": "thay đổi, nhanh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "change significantly",
+        "tiếng việt": "thay đổi, đáng kể",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "choose carefully",
+        "tiếng việt": "lựa chọn, cẩn thận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "choose sensibly",
+        "tiếng việt": "lựa chọn, nhạy cảm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "choose well",
+        "tiếng việt": "lựa chọn, thông thái",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "climb dramatically",
+        "tiếng việt": "tăng, đột ngột",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "climb rapidly",
+        "tiếng việt": "tăng, nhanh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "climb sharply",
+        "tiếng việt": "tăng, mạnh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "climb steadily",
+        "tiếng việt": "tăng, đều đều",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "climb steeply",
+        "tiếng việt": "tăng, mạnh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "differ markedly",
+        "tiếng việt": "khác nhau, đáng kể",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "differ substantially",
+        "tiếng việt": "khác nhau, đáng kể",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fail abysmally",
+        "tiếng việt": "thất bại, cùng cực",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fail completely",
+        "tiếng việt": "thất bại, hoàn toàn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fail miserably",
+        "tiếng việt": "thất bại, kinh khủng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fail narrowly",
+        "tiếng việt": "thất bại, suýt",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fall rapidly",
+        "tiếng việt": "giảm, đột ngột",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fall sharply",
+        "tiếng việt": "giảm, nhanh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fall steadily",
+        "tiếng việt": "giảm, mạnh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fall steeply",
+        "tiếng việt": "giảm, đều đều",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fight doggedly",
+        "tiếng việt": "chiến đấu, đánh, tiếp tục",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fight hard",
+        "tiếng việt": "chiến đấu, đánh, mạnh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fight tenaciously",
+        "tiếng việt": "chiến đấu, đánh, kiên quyết",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fight desperately",
+        "tiếng việt": "chiến đấu, đánh, vô vọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "improve dramatically",
+        "tiếng việt": "cải thiện, đột ngột",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "improve greatly",
+        "tiếng việt": "cải thiện, cực kỳ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "improve markedly",
+        "tiếng việt": "cải thiện, đáng kể",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "improve vastly",
+        "tiếng việt": "cải thiện, nhiều",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "listen attentively",
+        "tiếng việt": "nghe, chăm chú",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "listen carefully",
+        "tiếng việt": "nghe, cẩn thận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "listen closely",
+        "tiếng việt": "nghe, cẩn thận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "listen hard",
+        "tiếng việt": "nghe, cố gắng tích cực",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "listen intently",
+        "tiếng việt": "nghe, chăm chú",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "object bitterly",
+        "tiếng việt": "phản đối, quyết liệt",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "object formally",
+        "tiếng việt": "phản đối, chính thức",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "object strenuously",
+        "tiếng việt": "phản đối, hăng hái",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "object vehemently",
+        "tiếng việt": "phản đối, kịch liệt, dữ dội",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "obtain dishonestly",
+        "tiếng việt": "đạt được, một cách thiếu trung",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "obtain thực",
+        "tiếng việt": "đạt được, một cách thiếu trung",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "obtain fraudulently",
+        "tiếng việt": "đạt được, một cách gian lận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "obtain illegally",
+        "tiếng việt": "đạt được, một cách bất hợp pháp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "promote actively",
+        "tiếng việt": "xúc tiến, tích cực",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "promote heavily",
+        "tiếng việt": "xúc tiến, mạnh mẽ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "promote strongly",
+        "tiếng việt": "xúc tiến, mạnh mẽ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "promote vigorously",
+        "tiếng việt": "xúc tiến, mạnh mẽ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "react adversely",
+        "tiếng việt": "phản ứng, tiêu cực",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "react angrily",
+        "tiếng việt": "phản ứng, một cách tức giận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "react unfavorably",
+        "tiếng việt": "phản ứng, bất lợi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "react violently",
+        "tiếng việt": "phản ứng, một cách bạo lực",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "recommend thoroughly",
+        "tiếng việt": "đề nghị, cẩn thận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "recommend unreservedly",
+        "tiếng việt": "đề nghị, cởi mở",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "recommend wholeheartedly",
+        "tiếng việt": "đề nghị, hết lòng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "recommend heartily",
+        "tiếng việt": "đề nghị, thân mật",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reduce dramatically",
+        "tiếng việt": "giảm, đột ngột",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reduce drastically",
+        "tiếng việt": "giảm, mạnh mẽ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reduce gradually",
+        "tiếng việt": "giảm, từ từ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reduce substantially",
+        "tiếng việt": "giảm, đáng kể",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reject categorically",
+        "tiếng việt": "từ chối, thẳng thừng, dứt khoát",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reject decisively",
+        "tiếng việt": "từ chối, thẳng thừng, dứt khoát",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "reject outright",
+        "tiếng việt": "từ chối, thẳng thừng, dứt khoát",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "remember distinctly",
+        "tiếng việt": "nhớ, rõ ràng, minh bạch",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "remember rightly",
+        "tiếng việt": "nhớ, chuẩn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "remember vaguely",
+        "tiếng việt": "nhớ, ngờ ngợ, không chắc chắn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rise dramatically",
+        "tiếng việt": "tăng, đột ngột",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rise rapidly",
+        "tiếng việt": "tăng, nhanh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rise sharply",
+        "tiếng việt": "tăng, mạnh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rise steadily",
+        "tiếng việt": "tăng, đều đều",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "rise steeply",
+        "tiếng việt": "tăng, mạnh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "search diligently",
+        "tiếng việt": "tìm kiếm, chăm chỉ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "search frantically",
+        "tiếng việt": "tìm kiếm, điên cuồng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "search painstakingly",
+        "tiếng việt": "tìm kiếm, cẩn thận, chịu khó",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "search systematically",
+        "tiếng việt": "tìm kiếm, có hệ thống",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "treat badly",
+        "tiếng việt": "đối xử, tệ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "treat equally",
+        "tiếng việt": "đối xử, công bằng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "treat harshly",
+        "tiếng việt": "đối xử, cay nghiệt",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "treat leniently",
+        "tiếng việt": "đối xử, khoan dung",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "treat unfairly",
+        "tiếng việt": "đối xử, không công bằng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "wait anxiously",
+        "tiếng việt": "đợi, hồi hộp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "wait eagerly",
+        "tiếng việt": "đợi, hăm hở, hăng hái",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "wait expectantly",
+        "tiếng việt": "đợi, hy vọng, kỳ vọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "wait impatiently",
+        "tiếng việt": "đợi, mất kiên nhẫn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "wait quietly",
+        "tiếng việt": "đợi, [trong] im lặng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "watch avidly",
+        "tiếng việt": "xem, say sưa, ngấu nghiến",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "watch helplessly",
+        "tiếng việt": "xem, bất lực, vô vọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "watch idly",
+        "tiếng việt": "xem, [những thứ] không đâu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "watch incredulously",
+        "tiếng việt": "xem, [trong] hoài nghi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "watch intently",
+        "tiếng việt": "xem, chăm chú",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "weaken considerably",
+        "tiếng việt": "làm yếu đi, đáng kể",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "weaken fatally",
+        "tiếng việt": "làm yếu đi, một cách chết người",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "weaken seriously",
+        "tiếng việt": "làm yếu đi, nghiêm trọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "weaken severely",
+        "tiếng việt": "làm yếu đi, nghiêm trọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "win comfortably",
+        "tiếng việt": "chiến thắng, dễ dàng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "win convincingly",
+        "tiếng việt": "chiến thắng, thuyết phục",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "win easily",
+        "tiếng việt": "chiến thắng, dễ dàng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "win narrowly",
+        "tiếng việt": "chiến thắng, suýt",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "work closely [with/towards]",
+        "tiếng việt": "làm việc, gần với ...",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "work steadily",
+        "tiếng việt": "làm việc, kiên định, vững chắc",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "absolutely appalled",
+        "tiếng việt": "hoàn toàn, sốc",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "absolutely astonished",
+        "tiếng việt": "hoàn toàn, bất ngờ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "absolutely convinced",
+        "tiếng việt": "hoàn toàn, thuyết phục",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "absolutely delighted",
+        "tiếng việt": "hoàn toàn, vui mừng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "absolutely essential",
+        "tiếng việt": "hoàn toàn, quan trọng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "absolutely furious",
+        "tiếng việt": "hoàn toàn, tức giận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "badly needed",
+        "tiếng việt": "rất, cần",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "badly worded",
+        "tiếng việt": "tệ hại, viết từ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "commercially successful",
+        "tiếng việt": "về phương diện thương mại, thành công",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "commercially viable",
+        "tiếng việt": "về phương diện thương mại, có khả năng thành công",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "completely different",
+        "tiếng việt": "hoàn toàn, khác nhau",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "completely natural",
+        "tiếng việt": "hoàn toàn, tự nhiên",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "completely satisfied",
+        "tiếng việt": "hoàn toàn, hài lòng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "completely separate",
+        "tiếng việt": "hoàn toàn, xa cách, chia cắt",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "completely unacceptable",
+        "tiếng việt": "hoàn toàn, không thể chấp nhận",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deeply committed",
+        "tiếng việt": "sâu sắc, cam kết",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deeply divided",
+        "tiếng việt": "sâu sắc, chia rẽ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deeply hurt",
+        "tiếng việt": "sâu sắc, tổn thương",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deeply moved",
+        "tiếng việt": "sâu sắc, cảm động",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deeply offensive",
+        "tiếng việt": "sâu sắc, xúc phạm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "deeply blameless",
+        "tiếng việt": "sâu sắc, vô tội",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "entirely fair",
+        "tiếng việt": "hoàn toàn, công bằng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "entirely unaware",
+        "tiếng việt": "hoàn toàn, không để ý",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "extremely hard",
+        "tiếng việt": "cực kỳ, khó",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "extremely interested",
+        "tiếng việt": "cực kỳ, quan tâm",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "extremely simple",
+        "tiếng việt": "cực kỳ, đơn giản",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "extremely successful",
+        "tiếng việt": "cực kỳ, thành công",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fully aware",
+        "tiếng việt": "hoàn toàn, để ý",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fully informed",
+        "tiếng việt": "hoàn toàn, được cập nhật",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "fully recovered",
+        "tiếng việt": "hoàn toàn, hồi phục",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "greatly appreciated",
+        "tiếng việt": "cực kỳ, cảm kích",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "greatly influenced",
+        "tiếng việt": "cực kỳ, bị ảnh hưởng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "heavily committed",
+        "tiếng việt": "nhiều, cam kết",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "heavily involved",
+        "tiếng việt": "nhiều, dính dáng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "heavily charged",
+        "tiếng việt": "nhiều, trả tiền",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "highly competitive",
+        "tiếng việt": "rất, cạnh tranh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "highly controversial",
+        "tiếng việt": "rất, đáng tranh cãi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "highly educated",
+        "tiếng việt": "rất, có học thức",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "highly irregular",
+        "tiếng việt": "rất, không bình thường",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "highly paid",
+        "tiếng việt": "rất, được trả [cao]",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "highly recommended",
+        "tiếng việt": "rất, khuyến khích",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "highly unlikely",
+        "tiếng việt": "rất, chắc chắn là không",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "increasingly common",
+        "tiếng việt": "ngày một, lan rộng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "increasingly concerned",
+        "tiếng việt": "ngày một, đáng quan ngại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "increasingly popular",
+        "tiếng việt": "ngày một, phổ biến",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "relatively modest",
+        "tiếng việt": "tương đối, khiêm tốn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "relatively unknown",
+        "tiếng việt": "tương đối, vô danh",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "seriously affected",
+        "tiếng việt": "nghiêm trọng, ảnh hưởng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "seriously damaged",
+        "tiếng việt": "nghiêm trọng, thiệt hại",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "seriously hurt",
+        "tiếng việt": "nghiêm trọng, đau",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "seriously injured",
+        "tiếng việt": "nghiêm trọng, bị thương",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "seriously worried",
+        "tiếng việt": "nghiêm trọng, lo lắng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "seriously wounded",
+        "tiếng việt": "nghiêm trọng, bị thương",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "thoroughly ashamed",
+        "tiếng việt": "hết sức, hổ thẹn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "thoroughly enjoyable",
+        "tiếng việt": "hết sức, thích thú",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "thoroughly miserable",
+        "tiếng việt": "hết sức, khốn khổ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "thoroughly unpleasant",
+        "tiếng việt": "hết sức, khó chịu",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "utterly absurd",
+        "tiếng việt": "hoàn toàn, ngớ ngẩn",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "utterly devastated",
+        "tiếng việt": "hoàn toàn, phá huỷ",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "utterly impossible",
+        "tiếng việt": "hoàn toàn, bất khả thi",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "utterly ridiculous",
+        "tiếng việt": "hoàn toàn, buồn cười",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "utterly useless",
+        "tiếng việt": "hoàn toàn, vô dụng",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "well matched",
+        "tiếng việt": "tốt, phù hợp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    },
+    {
+        "tiếng anh": "well suited",
+        "tiếng việt": "tốt, phù hợp",
+        "phiên âm": "",
+        "câu ví dụ": "",
+        "từ đồng nghĩa": ""
+    }
+]
+
+
+var currentAnswer = "none"
+
+function load() {
+    if (localStorage.getItem("randomNumber")) {
+        var rd = localStorage.getItem("randomNumber")
+    }else{
+        var rd = 1;
+    }
+    if (localStorage.getItem("phienam")) {
+        var phienam = localStorage.getItem("phienam")
+    }else{
+        var phienam = false;
+    }
+    
+    var word = vocabulary[rd]
+    e1.innerHTML = word["tiếng anh"].toUpperCase()
+    if (currentAnswer == "tv") {
+        e2.innerHTML = word["tiếng việt"]}
+    <!-- }else if (currentAnswer == "vd") { -->
+        <!-- e2.innerHTML = word["câu ví dụ"] -->
+    <!-- } -->
+    <!-- else if (currentAnswer == "tdn") { -->
+        <!-- e2.innerHTML = word["từ đồng nghĩa"] -->
+    <!-- }else{ -->
+        <!-- e2.innerHTML = " " -->
+    <!-- } -->
+    <!-- e3.innerHTML = word["phiên âm"] -->
+}
+
+function tv() {
+    currentAnswer = "tv"
+    load()
+}
+
+function next(){
+	currentAnswer = "none"
+	rd = Math.floor(Math.random() * 491); 
+    localStorage.setItem("randomNumber", rd)
+	e2.innerHTML = ""
+	load()
+}
+
+</script>
+
+</html>
